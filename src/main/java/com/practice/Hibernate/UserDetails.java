@@ -1,17 +1,23 @@
 package com.practice.Hibernate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name="User_Details")
 public class UserDetails {
 	@Id
 	private int id;
+	
+	@Column(name = "first_name")
 	private String fname;
+	
+	@Column(name = "last_name")
 	private String lname;
+	
+	private Address address;
 	
 	public int getId() {
 		return id;
@@ -30,6 +36,12 @@ public class UserDetails {
 	}
 	public void setLname(String lname) {
 		this.lname = lname;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 }

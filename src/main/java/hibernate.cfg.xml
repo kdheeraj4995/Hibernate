@@ -9,16 +9,19 @@
 		<property name="connection.username">Hibernate</property>
 		<property name="connection.password">password</property>
 		
+		<property name="connection.pool_size">1</property>
+		<property name="current_session_context_class">thread</property>
+		
 		<!-- SQL dialect -->
 		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
-		
+
 		<!-- Echo all executed SQL to stdout -->
 		<property name="show_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">create</property>
-		
-		<mapping class="com.practice.Hibernate.UserDetails"/>
-		
+
+		<mapping class="com.practice.Hibernate.UserDetails" />
+
 	</session-factory>
 </hibernate-configuration>
