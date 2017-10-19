@@ -1,7 +1,12 @@
 package com.practice.Hibernate;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,6 +14,7 @@ import javax.persistence.Table;
 @Table(name="User_Details")
 public class UserDetails {
 	@Id
+	@GeneratedValue
 	private int id;
 	
 	@Column(name = "first_name")
@@ -18,6 +24,9 @@ public class UserDetails {
 	private String lname;
 	
 	private Address address;
+	
+	@ElementCollection
+	private Set<Jobs> jobList = new HashSet<Jobs>();
 	
 	public int getId() {
 		return id;
@@ -42,6 +51,12 @@ public class UserDetails {
 	}
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	public Set<Jobs> getJobList() {
+		return jobList;
+	}
+	public void setJobList(Set<Jobs> jobList) {
+		this.jobList = jobList;
 	}
 
 }
