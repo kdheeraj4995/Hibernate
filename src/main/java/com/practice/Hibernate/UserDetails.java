@@ -39,8 +39,7 @@ public class UserDetails {
 	@CollectionId(columns = { @Column(name= "Job_Id") }, generator = "sequence-gen", type = @Type(type ="long"))
 	private Collection<Jobs> jobList = new ArrayList<Jobs>();
 	
-	@OneToMany(cascade =  CascadeType.ALL)
-	@JoinTable(name = "User_Vehicle")
+	@OneToMany(cascade =  CascadeType.ALL , mappedBy = "user")
 	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 	
 	public int getUserId() {
