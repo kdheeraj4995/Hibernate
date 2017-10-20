@@ -22,6 +22,7 @@
 		<property name="hbm2ddl.auto">create</property>
 
 		<mapping class="com.practice.Hibernate.UserDetails" />
+		<mapping class="com.practice.Hibernate.Vehicle" />
 		
 
 	</session-factory>

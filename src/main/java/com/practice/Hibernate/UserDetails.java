@@ -3,6 +3,7 @@ package com.practice.Hibernate;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CollectionId;
@@ -37,6 +39,9 @@ public class UserDetails {
 	@CollectionId(columns = { @Column(name= "Job_Id") }, generator = "sequence-gen", type = @Type(type ="long"))
 	private Collection<Jobs> jobList = new ArrayList<Jobs>();
 	
+	@OneToOne(cascade =  CascadeType.ALL)
+	@JoinColumn(name = "vehicle_Id")
+	private Vehicle vehicle;
 	
 	public int getUserId() {
 		return userId;
@@ -68,6 +73,11 @@ public class UserDetails {
 	public void setJobList(Collection<Jobs> jobList) {
 		this.jobList = jobList;
 	}
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
 	
-
 }

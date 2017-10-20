@@ -11,6 +11,19 @@ public class App {
 		Firstuser.setFname("Ajay");
 		Firstuser.setLname("Kumar");
 		
+		Address firstaddress = new Address();
+		firstaddress.setCity("Pune");
+		firstaddress.setState("Maharashtra");
+		firstaddress.setCountry("India");
+		
+		Jobs job = new Jobs();
+		job.setCompany_name("Tech");
+		job.setJob_profile("Software Engineer");
+		
+		Firstuser.setAddress(firstaddress);
+		Firstuser.getJobList().add(job);
+		
+
 		UserDetails user = new UserDetails();
 		user.setFname("Dheeraj");
 		user.setLname("Reddy");
@@ -28,15 +41,13 @@ public class App {
 		secondJob.setCompany_name("New Company");
 		secondJob.setJob_profile("New Job Profile");
 		
-		Jobs job = new Jobs();
-		job.setCompany_name("Tech");
-		job.setJob_profile("Software Engineer");
-		
+		Vehicle vehicle = new Vehicle();
+		vehicle.setVehicle_name("Swift Vdi");
+	
 		user.setAddress(address);
 		user.getJobList().add(firstJob);
 		user.getJobList().add(secondJob);
-		
-		Firstuser.getJobList().add(job);
+		user.setVehicle(vehicle);
 		
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
