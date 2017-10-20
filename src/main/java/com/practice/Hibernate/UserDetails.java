@@ -8,6 +8,8 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +17,7 @@ import javax.persistence.Table;
 public class UserDetails {
 	@Id
 	@GeneratedValue
-	private int id;
+	private int userId;
 	
 	@Column(name = "first_name")
 	private String fname;
@@ -25,14 +27,16 @@ public class UserDetails {
 	
 	private Address address;
 	
+	@JoinTable(name = "UserDetails_Jobs",joinColumns = @JoinColumn(name = "user_Id"))
 	@ElementCollection
 	private Set<Jobs> jobList = new HashSet<Jobs>();
 	
-	public int getId() {
-		return id;
+	
+	public int getUserId() {
+		return userId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public String getFname() {
 		return fname;
