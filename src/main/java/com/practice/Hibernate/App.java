@@ -43,11 +43,15 @@ public class App {
 		
 		Vehicle vehicle = new Vehicle();
 		vehicle.setVehicle_name("Swift Vdi");
+		
+		Vehicle vehicle2 = new Vehicle();
+		vehicle2.setVehicle_name("Swift Zdi");
 	
 		user.setAddress(address);
 		user.getJobList().add(firstJob);
 		user.getJobList().add(secondJob);
-		user.setVehicle(vehicle);
+		user.getVehicle().add(vehicle);
+		user.getVehicle().add(vehicle2);
 		
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
