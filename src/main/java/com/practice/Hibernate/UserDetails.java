@@ -1,7 +1,7 @@
 package com.practice.Hibernate;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -11,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name="User_Details")
@@ -27,9 +31,11 @@ public class UserDetails {
 	
 	private Address address;
 	
-	@JoinTable(name = "UserDetails_Jobs",joinColumns = @JoinColumn(name = "user_Id"))
 	@ElementCollection
-	private Set<Jobs> jobList = new HashSet<Jobs>();
+	@JoinTable(name = "UserDetails_Jobs",joinColumns = @JoinColumn(name = "user_Id"))
+	@GenericGenerator(name = "sequence-gen", strategy = "sequence")
+	@CollectionId(columns = { @Column(name= "Job_Id") }, generator = "sequence-gen", type = @Type(type ="long"))
+	private Collection<Jobs> jobList = new ArrayList<Jobs>();
 	
 	
 	public int getUserId() {
@@ -56,11 +62,12 @@ public class UserDetails {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	public Set<Jobs> getJobList() {
+	public Collection<Jobs> getJobList() {
 		return jobList;
 	}
-	public void setJobList(Set<Jobs> jobList) {
+	public void setJobList(Collection<Jobs> jobList) {
 		this.jobList = jobList;
 	}
+	
 
 }
