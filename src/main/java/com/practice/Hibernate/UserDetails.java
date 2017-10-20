@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CollectionId;
@@ -39,7 +39,7 @@ public class UserDetails {
 	@CollectionId(columns = { @Column(name= "Job_Id") }, generator = "sequence-gen", type = @Type(type ="long"))
 	private Collection<Jobs> jobList = new ArrayList<Jobs>();
 	
-	@OneToMany(cascade =  CascadeType.ALL , mappedBy = "user")
+	@ManyToMany(cascade =  CascadeType.ALL , mappedBy = "userList")
 	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 	
 	public int getUserId() {

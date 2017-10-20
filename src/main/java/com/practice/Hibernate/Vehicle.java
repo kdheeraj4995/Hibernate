@@ -1,10 +1,14 @@
 package com.practice.Hibernate;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
 
 @Entity
 public class Vehicle {
@@ -13,9 +17,9 @@ public class Vehicle {
 	private int Vehicle_Id;
 	private String Vehicle_name;
 	
-	@ManyToOne
-	@JoinColumn(name="user_Id")
-	private UserDetails user;
+	@ManyToMany
+	@JoinTable(name = "User_Vechicle")
+	private Collection<UserDetails> userList =  new ArrayList<UserDetails>();
 
 	public int getVehicle_Id() {
 		return Vehicle_Id;
@@ -33,13 +37,12 @@ public class Vehicle {
 		Vehicle_name = vehicle_name;
 	}
 
-	public UserDetails getUser() {
-		return user;
+	public Collection<UserDetails> getUserList() {
+		return userList;
 	}
 
-	public void setUser(UserDetails user) {
-		this.user = user;
+	public void setUserList(Collection<UserDetails> userList) {
+		this.userList = userList;
 	}
-
 	
 }
