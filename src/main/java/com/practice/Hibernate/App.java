@@ -10,7 +10,7 @@ public class App {
 		UserDetails Firstuser = new UserDetails();
 		Firstuser.setFname("Ajay");
 		Firstuser.setLname("Kumar");
-		
+		/*
 		Address firstaddress = new Address();
 		firstaddress.setCity("Pune");
 		firstaddress.setState("Maharashtra");
@@ -21,14 +21,14 @@ public class App {
 		job.setJob_profile("Software Engineer");
 		
 		Firstuser.setAddress(firstaddress);
-		Firstuser.getJobList().add(job);
+		Firstuser.getJobList().add(job);*/
 		
 
 		UserDetails user = new UserDetails();
 		user.setFname("Dheeraj");
 		user.setLname("Reddy");
 		
-		Address address = new Address();
+		/*Address address = new Address();
 		address.setCity("Hyderabad");
 		address.setState("Telangana");
 		address.setCountry("India");
@@ -39,7 +39,7 @@ public class App {
 		
 		Jobs secondJob = new Jobs();
 		secondJob.setCompany_name("New Company");
-		secondJob.setJob_profile("New Job Profile");
+		secondJob.setJob_profile("New Job Profile");*/
 		
 		Vehicle vehicle = new Vehicle();
 		vehicle.setVehicle_name("Swift Vdi");
@@ -47,9 +47,10 @@ public class App {
 		Vehicle vehicle2 = new Vehicle();
 		vehicle2.setVehicle_name("Swift Zdi");
 	
-		user.setAddress(address);
+		/*user.setAddress(address);
 		user.getJobList().add(firstJob);
-		user.getJobList().add(secondJob);
+		user.getJobList().add(secondJob);*/
+		
 		user.getVehicle().add(vehicle);
 		user.getVehicle().add(vehicle2);
 		

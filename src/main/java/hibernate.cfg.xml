@@ -20,9 +20,13 @@
 
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">create</property>
-
+<!-- 
 		<mapping class="com.practice.Hibernate.UserDetails" />
-		<mapping class="com.practice.Hibernate.Vehicle" />
+		<mapping class="com.practice.Hibernate.Vehicle" /> -->
+		
+		<mapping class="com.practice.inheritance.Vehicle" />
+		<mapping class="com.practice.inheritance.TwoWheeler" />
+		<mapping class="com.practice.inheritance.FourWheeler" />
 		
 
 	</session-factory>

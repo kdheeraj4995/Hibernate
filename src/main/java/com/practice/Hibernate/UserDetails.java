@@ -5,18 +5,13 @@ import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.CollectionId;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name="User_Details")
@@ -31,13 +26,13 @@ public class UserDetails {
 	@Column(name = "last_name")
 	private String lname;
 	
-	private Address address;
+/*	private Address address;
 	
 	@ElementCollection
 	@JoinTable(name = "UserDetails_Jobs",joinColumns = @JoinColumn(name = "user_Id"))
 	@GenericGenerator(name = "sequence-gen", strategy = "sequence")
 	@CollectionId(columns = { @Column(name= "Job_Id") }, generator = "sequence-gen", type = @Type(type ="long"))
-	private Collection<Jobs> jobList = new ArrayList<Jobs>();
+	private Collection<Jobs> jobList = new ArrayList<Jobs>();*/
 	
 	@ManyToMany(cascade =  CascadeType.ALL , mappedBy = "userList")
 	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
@@ -60,7 +55,7 @@ public class UserDetails {
 	public void setLname(String lname) {
 		this.lname = lname;
 	}
-	public Address getAddress() {
+	/*public Address getAddress() {
 		return address;
 	}
 	public void setAddress(Address address) {
@@ -71,7 +66,7 @@ public class UserDetails {
 	}
 	public void setJobList(Collection<Jobs> jobList) {
 		this.jobList = jobList;
-	}
+	}*/
 	public Collection<Vehicle> getVehicle() {
 		return vehicle;
 	}
