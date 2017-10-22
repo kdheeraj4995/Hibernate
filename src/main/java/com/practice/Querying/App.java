@@ -10,15 +10,15 @@ import org.hibernate.cfg.Configuration;
 
 public class App {
 	
-	@SuppressWarnings({"unchecked", "deprecation"})
+	@SuppressWarnings({"unchecked"})
 	public static void main(String args[]) {
 
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
-		System.out.println("Offset : 5  and  Max Results : 3");
-		Query query = session.createQuery("from DemoData");
+		System.out.println("Named Query");
+		Query query = session.getNamedQuery("DemoData.All");
 		query.setFirstResult(5);
 		query.setMaxResults(3);
 		List<DemoData> data = (List<DemoData>)query.getResultList();
@@ -27,20 +27,10 @@ public class App {
 			System.out.println(d.getDataName());
 		}
 		
-		System.out.println();
-		System.out.println("Query using Position Parameter setting with ? ");
-		@SuppressWarnings("rawtypes")
-		org.hibernate.Query query1 = session.createQuery("from DemoData where dataName = ?");
-		query1.setString(0, "Data 9");
-		List<DemoData> data1 = (List<DemoData>)query1.getResultList();
-		
-		for(DemoData d1 :data1){
-			System.out.println(d1.getDataName());
-		}
 		
 		System.out.println();
-		System.out.println("Query using Named Pameter setting with :parameter");
-		Query query2 = session.createQuery("from DemoData where dataName =:Name");
+		System.out.println("Named Query using Named Pameter setting with :parameter");
+		Query query2 = session.createNamedQuery("DemoData.byName");
 		query2.setParameter("Name", "Data 1");
 		List<DemoData> data2 = (List<DemoData>)query2.getResultList();
 		
