@@ -1,31 +1,33 @@
 package com.practice.inheritance;
 
+import java.util.List;
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class App {
+	@SuppressWarnings("unchecked")
 	public static void main(String args[]) {
-		Vehicle vehicle =  new Vehicle();
-		vehicle.setVehicle_name("Vehicle Name");
-		
-		TwoWheeler twoWheeler = new TwoWheeler();
-		twoWheeler.setSteeringBar("Steering Bar");
-		twoWheeler.setVehicle_name("Fz");
-		
-		FourWheeler fourWheeler= new FourWheeler();
-		fourWheeler.setSteeringWheel("Power Steering");
-		fourWheeler.setVehicle_name("Swift");
-		
-		
+
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
-		session.save(vehicle);
-		session.save(twoWheeler);
-		session.save(fourWheeler);
+		Query query = session.createQuery("from Vehicle");
+		query.setFirstResult(5);
+		query.setMaxResults(3);
+		List<Vehicle> vehicles =   query.getResultList();
 		
+		for ( Vehicle vehicle: vehicles){
+			System.out.println(vehicle.getVehicle_Id()+"  "+vehicle.getVehicle_name()+"  "+vehicle.getReg_State());
+		}
+		
+		
+		
+		
+
 		session.getTransaction().commit();
 		session.close();
 	}
