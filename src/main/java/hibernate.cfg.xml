@@ -19,14 +19,16 @@
 		<property name="show_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
-		<!-- <property name="hbm2ddl.auto">update</property> -->
-<!-- 
-		<mapping class="com.practice.Hibernate.UserDetails" />
-		<mapping class="com.practice.Hibernate.Vehicle" /> -->
+		<property name="hibernate.hbm2ddl.auto">none</property>
+
+	<!--<mapping class="com.practice.Hibernate.UserDetails" />
+		<mapping class="com.practice.Hibernate.Vehicle" />
 		
 		<mapping class="com.practice.inheritance.Vehicle" />
 		<mapping class="com.practice.inheritance.TwoWheeler" />
-		<mapping class="com.practice.inheritance.FourWheeler" />
+		<mapping class="com.practice.inheritance.FourWheeler" />-->	
+		
+		<mapping class="com.practice.Querying.DemoData" />
 		
 
 	</session-factory>
